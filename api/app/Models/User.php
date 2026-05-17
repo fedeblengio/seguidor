@@ -22,7 +22,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tenant_id',
+        'role',
     ];
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
