@@ -3,8 +3,6 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    ports:
-      - "8000:80"
     environment:
       - APP_ENV=production
       - APP_KEY=${APP_KEY}
@@ -28,6 +26,4 @@ services:
       context: ./web
       dockerfile: Dockerfile
       args:
-        - VITE_API_URL=http://seguidor.unbrabyte.com:8000/api
-    ports:
-      - "3000:80"
+        - VITE_API_URL=http://api.seguidor.unbrabyte.com/api
