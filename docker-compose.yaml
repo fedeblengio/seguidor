@@ -21,6 +21,9 @@ services:
       - SANCTUM_STATEFUL_DOMAINS=seguidor.unbrabyte.com
       - SESSION_DOMAIN=.unbrabyte.com
       - CORS_ALLOWED_ORIGINS=http://seguidor.unbrabyte.com
+    networks:
+      - default
+      - coolify
     labels:
       - traefik.enable=true
       - traefik.http.routers.seguidor-api.rule=Host(`api.seguidor.unbrabyte.com`)
@@ -40,3 +43,7 @@ services:
       - traefik.http.routers.seguidor-web.entryPoints=http
       - traefik.http.routers.seguidor-web.service=seguidor-web
       - traefik.http.services.seguidor-web.loadbalancer.server.port=80
+
+networks:
+  coolify:
+    external: true
